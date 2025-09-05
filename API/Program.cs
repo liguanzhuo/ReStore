@@ -41,17 +41,19 @@ namespace API
 
             app.MapControllers();
 
-            var scope = app.Services.CreateScope();
-            var context = scope.ServiceProvider.GetRequiredService<StoreContext>();
-            var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-            try
+            using (var scope = app.Services.CreateScope())
             {
-                context.Database.Migrate();
-                DbInitializer.Initialize(context);
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "A problem occured during migration");   
+                var context = scope.ServiceProvider.GetRequiredService<StoreContext>();
+                var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                try
+                {
+                    context.Database.Migrate();
+                    DbInitializer.Initialize(context);
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError(ex, "A problem occured during migration");
+                }
             }
 
             app.Run();
