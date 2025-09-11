@@ -3,7 +3,7 @@ import ProductList from "./ProductList";
 import { useState, useEffect } from "react";
 
 
-function Catalog() {
+export default function Catalog() {
     const [products, setProduct] = useState<Product[]>([]);
 
     useEffect(() => {
@@ -19,6 +19,4 @@ function Catalog() {
         </>
     )
 }
-
-export default Catalog
 

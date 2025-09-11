@@ -5,9 +5,15 @@ import { ThemeProvider } from "@emotion/react";
 import { useState } from "react";
 
 
-function App() {
+export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const paletteType = darkMode ? 'dark' : 'light'
+  /**
+   * Theme: A global style. It can be customlized.
+   * The state of 'paletteType' is decided by 'darkMode'. 
+   * 'darkMode' = false, 'paletteType' = light
+   * 'darkMode' = true, 'paletteType' = dark
+   */
   const theme = createTheme({
     palette: {
       mode: paletteType,
@@ -17,8 +23,14 @@ function App() {
     }
   })
   
-
+/**
+ * <CssBaseline />: Remove the defult padding and margin in browser. Unify the font and layout.
+ * <Container>: Limit the width of content. Auto-adjust the width according to the different screen. Center the content horizontally on the page.
+ */
   return (
+    /**
+     * ThemeProvider: Provide the theme to the entire React component tree so that all child components can share the same style rule.
+     */
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={()=>setDarkMode(!darkMode)}/>
@@ -28,5 +40,3 @@ function App() {
     </ThemeProvider>
   )
 }
-
-export default App

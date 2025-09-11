@@ -7,7 +7,14 @@ interface Props {
 
 function ProductCard({ product }: Props) {
     return (
+        /**
+         * <Card>: This is a MUI component. Used to show the brief product information.
+         */
         <Card>
+            {/**
+             * avatar is add a picture for the card.
+             * slotProps: Add customized style to child part of a component.
+             */}
             <CardHeader avatar={
                 <Avatar sx={{bgcolor:'secondary.main'}}>
                     {product.name.charAt(0).toUpperCase()}
@@ -20,11 +27,16 @@ function ProductCard({ product }: Props) {
                     }
                 }}
             />
+
             <CardMedia
                 sx={{ height: 140, backgroundSize: "contain", bgcolor:'primary.light' }}
                 image={product.pictureUrl}
                 title={product.name}
             />
+
+            {/**
+             * <Typography>: Text component.
+             */}
             <CardContent>
                 <Typography gutterBottom color="secondary" variant="h5">
                     ${(product.price / 100).toFixed(2)}
@@ -33,6 +45,7 @@ function ProductCard({ product }: Props) {
                     {product.brand} / {product.type}
                 </Typography>
             </CardContent>
+
             <CardActions>
                 <Button size="small">Add to cart</Button>
                 <Button size="small">View</Button>
