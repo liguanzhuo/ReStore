@@ -1,0 +1,26 @@
+import { createBrowserRouter } from "react-router";
+import App from "../layout/App";
+import HomePage from "../../features/home/HomePage";
+import Catalog from "../../features/catalog/Catalog";
+import ProductDetails from "../../features/catalog/ProductDetails";
+import AboutPage from "../../features/about/AboutPage";
+import ContactPage from "../../features/contact/ContactPage";
+
+/**
+ * This is React router. According to URL path decide which component should be renderred.
+ * path: URL path
+ * element: The component corresponding to path.
+ */
+export const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <App/>,
+        children: [
+            {path: '', element: <HomePage/>},
+            {path: 'catalog', element: <Catalog/>},
+            {path: 'catalog/:id', element: <ProductDetails/>},
+            {path: 'about', element: <AboutPage/>},
+            {path: 'contact', element: <ContactPage/>}
+        ]
+    }
+])
