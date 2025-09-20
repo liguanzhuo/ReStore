@@ -1,4 +1,3 @@
-import Catalog from "../../features/catalog/Catalog";
 import { Container, createTheme, CssBaseline } from "@mui/material";
 import Header from "./Header";
 import { ThemeProvider } from "@emotion/react";
